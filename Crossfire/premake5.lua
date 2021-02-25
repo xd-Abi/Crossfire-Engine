@@ -18,6 +18,7 @@ project "Crossfire"
     includedirs
     {
         "src",
+        "vendor/spdlog/include"
     }
 
     libdirs

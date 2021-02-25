@@ -30,7 +30,8 @@ files
 
 includedirs
 {
-    "Crossfire/src"
+    "Crossfire/src",
+    "Crossfire/vendor/spdlog/include"
 }
 
 links
