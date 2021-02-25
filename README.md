@@ -6,7 +6,7 @@
 
 The plan for Crossfire is to create a powerful and easy to use 3D engine with a clean design. This game engine is inspired by [Hazel Engine](https://github.com/TheCherno/Hazel "Hazel Github").
 
-## Shor term goals :
+## Short term goals :
 
 - Faster 2D and 3D rendering
 - Support for diffrent Platforms
