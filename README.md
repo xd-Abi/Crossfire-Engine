@@ -1,4 +1,4 @@
-# Crossfire-Engine [![License](https://img.shields.io/github/license/xdAbitur/Crossfire-Engine.svg)]
+# Crossfire-Engine ![License](https://img.shields.io/github/license/xdAbitur/Crossfire-Engine.svg)
 
 ![Crossfire-Engine](/Resources/Branding-Logo.png)
 
