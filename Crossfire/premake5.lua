@@ -1,5 +1,5 @@
 project "Crossfire"
-    kind "SharedLib"
+    kind "ConsoleApp"
     language "C++"
     staticruntime "on"
 
@@ -31,13 +31,7 @@ project "Crossfire"
 
     defines
     {
-        "CF_PLATFORM_WINDOWS",
-        "CF_BUILD_DLL"
-    }
-
-    postbuildcommands
-    {
-        ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+        "CF_PLATFORM_WINDOWS"
     }
 
     filter "system:windows"
