@@ -1,7 +1,3 @@
-outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-bin = "%{wks.location}/bin/" .. outputdir .. "/%{prj.name}"
-binint = "%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}"
-
 workspace "Crossfire"
     architecture "x64"
 
@@ -12,5 +8,6 @@ workspace "Crossfire"
         "Dist"
     }
 
-include "Crossfire-Core"
-include "Crossfire-Editor"
+outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+include "Crossfire"
