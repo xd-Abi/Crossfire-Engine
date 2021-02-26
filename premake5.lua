@@ -12,4 +12,5 @@ workspace "Crossfire"
         "Dist"
     }
 
-include "Crossfire"
+include "Crossfire-Core"
+include "Crossfire-Editor"

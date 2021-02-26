@@ -1,13 +1,10 @@
-project "Crossfire"
+project "Crossfire-Editor"
     kind "ConsoleApp"
     language "C++"
     staticruntime "on"
 
     targetdir (bin)
     objdir (binint)
-
-    pchheader "cfpch.h"
-    pchsource "src/cfpch.cpp"
 
     files
     {
@@ -18,7 +15,8 @@ project "Crossfire"
     includedirs
     {
         "src",
-        "vendor/spdlog/include"
+        "%{wks.location}/Crossfire-Core/src",
+        "%{wks.location}/Crossfire-Core/vendor/spdlog/include"
     }
 
     libdirs
@@ -27,6 +25,7 @@ project "Crossfire"
 
     links
     {
+        "Crossfire-Core"
     }
 
     defines

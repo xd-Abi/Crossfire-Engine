@@ -5,7 +5,7 @@
 namespace Crossfire
 {
 
-	class Application
+	class CF_API Application
 	{
 
 	public:
@@ -24,5 +24,8 @@ namespace Crossfire
 
 		bool m_Running = true;
 	};
+
+	// To be defined in CLIENT
+	Application* CreateApplication();
 }
 

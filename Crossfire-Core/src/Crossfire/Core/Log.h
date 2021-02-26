@@ -6,7 +6,7 @@
 namespace Crossfire
 {
 
-	class Log
+	class CF_API Log
 	{
 	public:
 		static void Initialize();
