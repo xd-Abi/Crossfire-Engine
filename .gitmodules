@@ -1,3 +1,6 @@
 [submodule "Crossfire/vendor/spdlog"]
 	path = Crossfire/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Crossfire/vendor/glm"]
+	path = Crossfire/vendor/glm
+	url = https://github.com/g-truc/glm

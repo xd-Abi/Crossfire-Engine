@@ -4,6 +4,7 @@ IncludeDirs = {}
 IncludeDirs["spdlog"] = "vendor/spdlog/include"
 IncludeDirs["glfw"] = "vendor/glfw/include"
 IncludeDirs["glew"] = "vendor/glew/include"
+IncludeDirs["glm"] = "vendor/glm"
 
 LibDirs = {}
 LibDirs["glfw"] = "vendor/glfw/lib-vc2019"
@@ -31,7 +32,8 @@ project "Crossfire"
         "src",
         IncludeDirs["spdlog"],
         IncludeDirs["glfw"],
-        IncludeDirs["glew"]
+        IncludeDirs["glew"],
+        IncludeDirs["glm"]
     }
 
     libdirs
