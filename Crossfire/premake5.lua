@@ -2,10 +2,14 @@
 -- Include directories relative to root folder (solution directory)
 IncludeDirs = {}
 IncludeDirs["spdlog"] = "vendor/spdlog/include"
-IncludeDirs["GLFW"] = "vendor/GLFW/include"
+IncludeDirs["glfw"] = "vendor/glfw/include"
 IncludeDirs["glew"] = "vendor/glew/include"
 
-project "Crossfire-Core"
+LibDirs = {}
+LibDirs["glfw"] = "vendor/glfw/lib-vc2019"
+LibDirs["glew"] =  "vendor/glew/lib/Release/x64"
+
+project "Crossfire"
     kind "ConsoleApp"
     language "C++"
     staticruntime "on"
@@ -26,14 +30,14 @@ project "Crossfire-Core"
     {
         "src",
         IncludeDirs["spdlog"],
-        IncludeDirs["GLFW"],
+        IncludeDirs["glfw"],
         IncludeDirs["glew"]
     }
 
     libdirs
     {
-        "vendor/GLFW/lib-vc2019",
-        "vendor/glew/lib/Release/x64"
+        LibDirs["glfw"],
+        LibDirs["glew"]
     }
 
     links
