@@ -22,6 +22,7 @@ namespace Crossfire
 		virtual void SetClearColor(float r, float g, float b, float a) = 0;
 		virtual void SetViewport(uint32_t width, uint32_t height) = 0;
 
+		static API& GetAPI() { return s_API; }
 		static Scope<RenderAPI> Create(API api);
 
 	private:
