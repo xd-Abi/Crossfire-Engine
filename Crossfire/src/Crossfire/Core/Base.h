@@ -30,4 +30,7 @@ namespace Crossfire
 	{
 		return std::make_shared<T>(std::forward<Args>(args)...);
 	}
+
+	template<typename T>
+	using Vec = std::vector<T>;
 }

@@ -2,6 +2,7 @@
 #include "Renderer.h"
 #include "Crossfire/Core/Application.h"
 #include "Crossfire/Core/Window.h"
+#include "Renderer2D.h"
 
 namespace Crossfire
 {
@@ -20,7 +21,7 @@ namespace Crossfire
 		s_RenderAPI->Clear();
 
 		// RENDER 
-
+		Renderer2D::
 	}
 
 	void Renderer::OnWindowResize(uint32_t width, uint32_t height)
