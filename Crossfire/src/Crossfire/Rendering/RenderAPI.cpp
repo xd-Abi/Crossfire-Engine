@@ -10,6 +10,7 @@ namespace Crossfire
 
 	Scope<RenderAPI> RenderAPI::Create(RenderAPI::API API)
 	{
+		s_API = API;
 		switch (API)
 		{
 		case RenderAPI::API::OpenGL:
