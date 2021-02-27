@@ -1,8 +1,9 @@
 
 -- Include directories relative to root folder (solution directory)
-InlcudeDirs = {}
-InlcudeDirs["spdlog"] = "vendor/spdlog/include"
-InlcudeDirs["GLFW"] = "vendor/GLFW/include"
+IncludeDirs = {}
+IncludeDirs["spdlog"] = "vendor/spdlog/include"
+IncludeDirs["GLFW"] = "vendor/GLFW/include"
+IncludeDirs["glew"] = "vendor/glew/include"
 
 project "Crossfire-Core"
     kind "ConsoleApp"
@@ -24,13 +25,15 @@ project "Crossfire-Core"
     includedirs
     {
         "src",
-        InlcudeDirs["spdlog"],
-        InlcudeDirs["GLFW"]
+        IncludeDirs["spdlog"],
+        IncludeDirs["GLFW"],
+        IncludeDirs["glew"]
     }
 
     libdirs
     {
-        "vendor/GLFW/lib-vc2019"
+        "vendor/GLFW/lib-vc2019",
+        "vendor/glew/lib/Release/x64"
     }
 
     links
@@ -38,6 +41,8 @@ project "Crossfire-Core"
         "glfw3.lib",
         "glfw3_mt.lib",
         "glfw3dll.lib",
+        "glew32.lib",
+        "glew32s.lib",
 
         "opengl32.lib"
     }

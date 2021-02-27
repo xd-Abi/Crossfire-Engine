@@ -5,6 +5,8 @@
 #include "Crossfire/Events/Event.h"
 #include "Crossfire/Events/ApplicationEvent.h"
 
+
+
 namespace Crossfire
 {
 
@@ -19,12 +21,14 @@ namespace Crossfire
 		void Run();
 		void OnEvent(Event& e);
 		
+		Window& GetWindow() { return *m_Window; }
 		static Application& Get() { return *s_Instance; }
 
 	private:
 			
 		// EventsCallbacks
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 
 		void OnUpdate();
 		void OnRender();

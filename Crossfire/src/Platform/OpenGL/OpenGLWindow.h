@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Crossfire/Core/Window.h"
+
+#define GLEW_STATIC
+#include "GL/glew.h"
 #include "GLFW/glfw3.h"
 
 namespace Crossfire 
@@ -14,6 +17,7 @@ namespace Crossfire
 		virtual ~OpenGLWindow();
 
 		void OnUpdate() override;
+		void OnDraw() override;
 
 		unsigned int GetWidth() const override { return m_Data.Width; }
 		unsigned int GetHeight() const override { return m_Data.Height; }
@@ -23,7 +27,8 @@ namespace Crossfire
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
-		virtual void* GetNativeWindow() const { return m_Window; }
+		void* GetNativeWindow() const override{ return m_Window; }
+
 	private:
 
 		virtual void Init(const WindowProps& props);
@@ -32,7 +37,7 @@ namespace Crossfire
 
 		GLFWwindow* m_Window;
 		
-		struct WindowData
+	struct WindowData
 		{
 			std::string Title;
 			unsigned int Width, Height;

@@ -42,14 +42,18 @@ namespace Crossfire
 
 		CF_CORE_INFO("Creating Window {0}({1},{2})", props.Title, props.Width, props.Height);
 
+	//	glfwWindowHint(GLFW_DECORATED, false);
+
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
 		
+		glfwMakeContextCurrent(m_Window);
+		glewInit();
+
 		const GLFWvidmode* vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 		int32_t centeredXPos = (vidmode->width - props.Width) / 2;
 		int32_t centeredYPos = (vidmode->height - props.Height) / 2;
 
 		glfwSetWindowPos(m_Window, centeredXPos, centeredYPos);
-		glfwMakeContextCurrent(m_Window);
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -139,6 +143,10 @@ namespace Crossfire
 	void OpenGLWindow::OnUpdate()
 	{
 		glfwPollEvents();
+	}
+
+	void OpenGLWindow::OnDraw()
+	{
 		glfwSwapBuffers(m_Window);
 	}
 

@@ -1,6 +1,7 @@
 #include "cfpch.h"
 #include "Application.h"
-#include "GLFW/glfw3.h"
+
+#include "Crossfire/Rendering/Renderer.h"
 
 namespace Crossfire
 {
@@ -13,6 +14,8 @@ namespace Crossfire
 		
 		m_Window = Window::Create(WindowProps("Crossfire | 0.0.1 Aplha"));
 		m_Window->SetEventCallback(CF_BIND_EVENT_FN(Application::OnEvent));
+	
+		Renderer::Init();
 	}
 
 	Application::~Application()
@@ -25,6 +28,7 @@ namespace Crossfire
 		EventDispatcher dispatcher(e);
 
 		dispatcher.Dispatch<WindowCloseEvent>(CF_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(CF_BIND_EVENT_FN(Application::OnWindowResize));
 
 		CF_CORE_INFO(e.ToString());
 	}
@@ -45,6 +49,12 @@ namespace Crossfire
 		return true;
 	}
 
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+		return true;
+	}
+
 	void Application::OnUpdate()
 	{
 		m_Window->OnUpdate();
@@ -52,6 +62,8 @@ namespace Crossfire
 
 	void Application::OnRender()
 	{
-
+		Renderer::OnRender();
+		Renderer::SetClearColor(1, 0.4f, 0.2f, 1);
+		m_Window->OnDraw();
 	}
 }

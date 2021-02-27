@@ -1,6 +1,6 @@
 #pragma once
-
 #include "cfpch.h"
+
 #include "Crossfire/Events/Event.h"
 
 namespace Crossfire
@@ -28,6 +28,7 @@ namespace Crossfire
 		virtual ~Window() = default;
 
 		virtual void OnUpdate() = 0;
+		virtual void OnDraw() = 0;
 
 		virtual uint32_t GetWidth() const = 0;
 		virtual uint32_t GetHeight() const = 0;
