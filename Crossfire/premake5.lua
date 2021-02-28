@@ -18,8 +18,8 @@ project "Crossfire"
     targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
     objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
-    pchheader "cfpch.h"
-    pchsource "src/cfpch.cpp"
+    pchheader "Core/cfpch.h"
+    pchsource "src/Core/cfpch.cpp"
 
     files
     {

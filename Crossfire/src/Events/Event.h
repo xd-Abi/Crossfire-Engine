@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Crossfire/Core/Base.h"
+#include "Core/Base.h"
 
 namespace Crossfire
 {

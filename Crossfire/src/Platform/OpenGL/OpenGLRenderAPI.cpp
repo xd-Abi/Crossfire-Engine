@@ -1,7 +1,8 @@
-#include "cfpch.h"
+#include "Core/cfpch.h"
 #include "OpenGLRenderAPI.h"
-#include "Crossfire/Core/Assert.h"
-#include "gl/glew.h"
+#include "Core/Assert.h"
+
+#include <gl/glew.h>
 
 namespace Crossfire
 {

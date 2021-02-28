@@ -1,10 +1,10 @@
-#include "cfpch.h"
+#include "Core/cfpch.h"
 #include "OpenGLWindow.h"
 
-#include "Crossfire/Core/Assert.h"
-#include "Crossfire/Events/ApplicationEvent.h"
-#include "Crossfire/Events/KeyEvent.h"
-#include "Crossfire/Events/MouseEvent.h"
+#include "Core/Assert.h"
+#include "Events/ApplicationEvent.h"
+#include "Events/KeyEvent.h"
+#include "Events/MouseEvent.h"
 
 namespace Crossfire
 {

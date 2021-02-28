@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Crossfire/Rendering/Mesh.h"
+#include "Renderer/Mesh.h"
 
 namespace Crossfire
 {

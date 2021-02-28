@@ -2,10 +2,8 @@
 
 #include "Base.h"
 #include "Window.h"
-#include "Crossfire/Events/Event.h"
-#include "Crossfire/Events/ApplicationEvent.h"
-
-
+#include "Events/Event.h"
+#include "Events/ApplicationEvent.h"
 
 namespace Crossfire
 {

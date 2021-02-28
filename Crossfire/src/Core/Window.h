@@ -1,7 +1,6 @@
 #pragma once
 #include "cfpch.h"
-
-#include "Crossfire/Events/Event.h"
+#include "Events/Event.h"
 
 namespace Crossfire
 { 
