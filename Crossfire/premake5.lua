@@ -3,12 +3,11 @@
 IncludeDirs = {}
 IncludeDirs["spdlog"] = "vendor/spdlog/include"
 IncludeDirs["glfw"] = "vendor/glfw/include"
-IncludeDirs["glew"] = "vendor/glew/include"
+IncludeDirs["glad"] = "vendor/glad/include"
 IncludeDirs["glm"] = "vendor/glm"
 
 LibDirs = {}
 LibDirs["glfw"] = "vendor/glfw/lib-vc2019"
-LibDirs["glew"] =  "vendor/glew/lib/Release/x64"
 
 project "Crossfire"
     kind "ConsoleApp"
@@ -32,30 +31,31 @@ project "Crossfire"
         "src",
         IncludeDirs["spdlog"],
         IncludeDirs["glfw"],
-        IncludeDirs["glew"],
+        IncludeDirs["glad"],
         IncludeDirs["glm"]
     }
 
     libdirs
     {
-        LibDirs["glfw"],
-        LibDirs["glew"]
+        LibDirs["glfw"]
     }
 
     links
     {
+        "glad",
+
         "glfw3.lib",
         "glfw3_mt.lib",
         "glfw3dll.lib",
-        "glew32.lib",
-        "glew32s.lib",
 
         "opengl32.lib"
     }
 
     defines
     {
-        "CF_PLATFORM_WINDOWS"
+        "CF_PLATFORM_WINDOWS",
+        "_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
     }
 
     filter "system:windows"

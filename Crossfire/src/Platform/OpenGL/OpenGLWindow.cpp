@@ -6,6 +6,8 @@
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
 
+#include <glad/glad.h>
+
 namespace Crossfire
 {
 
@@ -47,7 +49,7 @@ namespace Crossfire
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
 		
 		glfwMakeContextCurrent(m_Window);
-		glewInit();
+		gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 
 		const GLFWvidmode* vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 		int32_t centeredXPos = (vidmode->width - props.Width) / 2;
@@ -56,6 +58,8 @@ namespace Crossfire
 		glfwSetWindowPos(m_Window, centeredXPos, centeredYPos);
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
+
+
 
 		glfwSetWindowAspectRatio(m_Window, 16, 9);
 

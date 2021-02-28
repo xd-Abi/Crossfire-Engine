@@ -2,7 +2,7 @@
 #include "OpenGLRenderAPI.h"
 #include "Core/Assert.h"
 
-#include <gl/glew.h>
+#include <glad/glad.h>
 
 namespace Crossfire
 {

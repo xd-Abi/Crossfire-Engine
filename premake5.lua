@@ -11,3 +11,4 @@ workspace "Crossfire"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 include "Crossfire"
+include "Crossfire/vendor/glad"
