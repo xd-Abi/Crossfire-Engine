@@ -44,7 +44,7 @@ namespace Crossfire
 
 		CF_CORE_INFO("Creating Window {0}({1},{2})", props.Title, props.Width, props.Height);
 
-	//	glfwWindowHint(GLFW_DECORATED, false);
+		//glfwWindowHint(GLFW_DECORATED, false);
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
 		

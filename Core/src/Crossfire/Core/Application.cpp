@@ -43,10 +43,35 @@ namespace Crossfire
 
 		while (m_Running)
 		{
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 
-			OnUpdate();
+			OnUpdate(timestep);
 			OnRender();
 		}
+	}
+
+	void Application::OnUpdate(Timestep ts)
+	{
+		if (!m_Minimized)
+		{
+			//TODO: Update Game
+		}
+
+		CF_CORE_INFO("I'm Updating! {0}", ts);
+
+		m_Window->OnUpdate();
+	}
+
+	void Application::OnRender()
+	{
+		if (!m_Minimized)
+		{ 
+			Renderer::OnRender();
+		}
+
+		m_Window->OnDraw();
 	}
 	
 	bool Application::OnWindowClose(WindowCloseEvent& e)
@@ -57,18 +82,17 @@ namespace Crossfire
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+
+		if (e.GetWidth() == 0 || e.GetHeight() == 0)
+		{
+			m_Minimized = true;
+			return false;
+		}
+
+		m_Minimized = false;
+
 		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
 		return true;
 	}
 
-	void Application::OnUpdate()
-	{
-		m_Window->OnUpdate();
-	}
-
-	void Application::OnRender()
-	{
-		Renderer::OnRender();
-		m_Window->OnDraw();
-	}
 }

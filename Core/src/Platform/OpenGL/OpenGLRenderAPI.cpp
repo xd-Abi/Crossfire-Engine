@@ -29,6 +29,7 @@ namespace Crossfire
 
 	void OpenGLRenderAPI::Init()
 	{
+
 	#ifdef CF_DEBUG
 			
 		glEnable(GL_DEBUG_OUTPUT);
@@ -41,6 +42,7 @@ namespace Crossfire
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+		CF_CORE_INFO("{0}", glGetString(GL_VERSION));
 	}
 
 	void OpenGLRenderAPI::SetViewport(uint32_t width, uint32_t height)

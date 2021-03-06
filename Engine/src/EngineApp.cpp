@@ -1,6 +1,6 @@
 #include <Crossfire.h>
 #include <Crossfire/Core/EntryPoint.h>
-
+#include <Crossfire/Renderer/Renderer.h>
 
 namespace Crossfire
 {
@@ -10,7 +10,7 @@ namespace Crossfire
 	public:
 		EngineApp()
 		{
-
+			Renderer::SetClearColor(0, 0, 0, 1);
 		}
 
 		~EngineApp()

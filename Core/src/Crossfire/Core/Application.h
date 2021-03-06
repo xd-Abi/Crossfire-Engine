@@ -4,6 +4,7 @@
 #include "Window.h"
 #include "Crossfire/Events/Event.h"
 #include "Crossfire/Events/ApplicationEvent.h"
+#include "Timestep.h"
 
 namespace Crossfire
 {
@@ -28,14 +29,17 @@ namespace Crossfire
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 
-		void OnUpdate();
+		void OnUpdate(Timestep ts);
 		void OnRender();
 
 	private:
 
 		Scope<Window> m_Window;
 		bool m_Running = true;
+		bool m_Minimized = false;
+		float m_LastFrameTime = 0.0f;
 
+	private:
 		static Application* s_Instance;
 	};
 

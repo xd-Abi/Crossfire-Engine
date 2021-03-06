@@ -23,6 +23,8 @@ namespace Crossfire
 		s_RenderAPI = RenderAPI::Create(RenderAPI::API::OpenGL);
 #endif
 
+		s_RenderAPI->Init();
+
 		mesh = Mesh::Create();
 
 		Vec<float> vertices = {
@@ -51,7 +53,7 @@ namespace Crossfire
 			version + "\n" + 
 			"out vec4 color;\n" + 
 			"void main(){\n" + 
-			"color = vec4(0.4,0.0,0.0,0.1);\n"
+			"color = vec4(1,1.0,1.0,0.1);\n"
 			+ "}\n";
 
 		shader = Shader::Create(VertexShader, FragmentShader);
@@ -59,13 +61,14 @@ namespace Crossfire
 
 	void Renderer::OnRender()
 	{
+		CF_INFO("I'm Rendering!");
+
 		s_RenderAPI->Clear();
 
 		// RENDER 
 		shader->Bind();
 		mesh->Draw();
 		shader->Unbind();
-		SetClearColor(1, 1, 1, 1);
 	}
 
 	void Renderer::OnWindowResize(uint32_t width, uint32_t height)
