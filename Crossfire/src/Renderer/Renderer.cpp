@@ -4,6 +4,7 @@
 #include "Core/Window.h"
 
 #include "Mesh.h"
+#include "Shader.h"
 
 namespace Crossfire
 {
@@ -12,14 +13,15 @@ namespace Crossfire
 	
 	//TESTING
 	Ref<Mesh> mesh;
+	Ref<Shader> shader;
 
 
 	void Renderer::Init()
 	{
 
-	#ifdef CF_API_OPENGL
+#ifdef CF_API_OPENGL
 		s_RenderAPI = RenderAPI::Create(RenderAPI::API::OpenGL);
-	#endif
+#endif
 
 		mesh = Mesh::Create();
 
@@ -36,6 +38,23 @@ namespace Crossfire
 
 		mesh->SetVertices(vertices, 2);
 		mesh->SetIndices(indices);
+
+		std::string version = "#version 330";
+		std::string VertexShader = 
+			version + "\n" + 
+			"layout (location = 0) in vec3 position;\n" + 
+			"void main(){\n" + 
+			"gl_Position = vec4(position,1);\n" 
+			+ "}\n";
+		
+		std::string FragmentShader = 
+			version + "\n" + 
+			"out vec4 color;\n" + 
+			"void main(){\n" + 
+			"color = vec4(0.2,0.1,0.4,1);\n"
+			+ "}\n";
+
+		shader = Shader::Create(VertexShader, FragmentShader);
 	}
 
 	void Renderer::OnRender()
@@ -43,7 +62,9 @@ namespace Crossfire
 		s_RenderAPI->Clear();
 
 		// RENDER 
+		shader->Bind();
 		mesh->Draw();
+		shader->Unbind();
 	}
 
 	void Renderer::OnWindowResize(uint32_t width, uint32_t height)

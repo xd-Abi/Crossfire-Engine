@@ -59,8 +59,6 @@ namespace Crossfire
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
-
-
 		glfwSetWindowAspectRatio(m_Window, 16, 9);
 
 		// Set GLFW callbacks
