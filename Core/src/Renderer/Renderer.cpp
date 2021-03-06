@@ -26,10 +26,10 @@ namespace Crossfire
 		mesh = Mesh::Create();
 
 		Vec<float> vertices = {
-			-0.5f, 0.5f,
-			-0.5f, -0.5f,
-			0.5f, -0.5f,
-			0.5f, 0.5f
+			-0.25f, 0.5f,
+			-0.25f, -0.25f,
+			0.25f, -0.25f,
+			0.25f, 0.5f
 		};
 
 		Vec<uint32_t> indices = {
@@ -51,7 +51,7 @@ namespace Crossfire
 			version + "\n" + 
 			"out vec4 color;\n" + 
 			"void main(){\n" + 
-			"color = vec4(0.2,0.1,0.4,1);\n"
+			"color = vec4(0.4,0.0,0.0,0.1);\n"
 			+ "}\n";
 
 		shader = Shader::Create(VertexShader, FragmentShader);
@@ -65,6 +65,7 @@ namespace Crossfire
 		shader->Bind();
 		mesh->Draw();
 		shader->Unbind();
+		SetClearColor(1, 1, 1, 1);
 	}
 
 	void Renderer::OnWindowResize(uint32_t width, uint32_t height)

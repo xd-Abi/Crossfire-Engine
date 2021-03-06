@@ -63,7 +63,6 @@ namespace Crossfire
 	void Application::OnRender()
 	{
 		Renderer::OnRender();
-		Renderer::SetClearColor(1, 0.4f, 0.2f, 1);
 		m_Window->OnDraw();
 	}
 }

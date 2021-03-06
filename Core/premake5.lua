@@ -1,4 +1,3 @@
-
 -- Include directories relative to root folder (solution directory)
 IncludeDirs = {}
 IncludeDirs["spdlog"] = "vendor/spdlog/include"
@@ -9,15 +8,15 @@ IncludeDirs["glm"] = "vendor/glm"
 LibDirs = {}
 LibDirs["glfw"] = "vendor/glfw/lib-vc2019"
 
-project "Crossfire"
-    kind "ConsoleApp"
+project "Core"
+    kind "StaticLib"
     language "C++"
     staticruntime "on"
 
     targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
     objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
-    pchheader "Core/cfpch.h"
+    pchheader "cfpch.h"
     pchsource "src/Core/cfpch.cpp"
 
     files
@@ -56,6 +55,11 @@ project "Crossfire"
         "CF_PLATFORM_WINDOWS",
         "_CRT_SECURE_NO_WARNINGS",
 		"GLFW_INCLUDE_NONE"
+    }
+
+    postbuildcommands
+    {
+        ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Engine")
     }
 
     filter "system:windows"
