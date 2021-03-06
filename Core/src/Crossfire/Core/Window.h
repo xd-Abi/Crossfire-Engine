@@ -1,6 +1,6 @@
 #pragma once
 #include "cfpch.h"
-#include "Events/Event.h"
+#include "Crossfire/Events/Event.h"
 
 namespace Crossfire
 { 
@@ -42,4 +42,3 @@ namespace Crossfire
 		static Scope<Window> Create(const WindowProps& props = WindowProps());
 	};
 }
-

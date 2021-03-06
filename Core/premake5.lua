@@ -1,13 +1,3 @@
--- Include directories relative to root folder (solution directory)
-IncludeDirs = {}
-IncludeDirs["spdlog"] = "vendor/spdlog/include"
-IncludeDirs["glfw"] = "vendor/glfw/include"
-IncludeDirs["glad"] = "vendor/glad/include"
-IncludeDirs["glm"] = "vendor/glm"
-
-LibDirs = {}
-LibDirs["glfw"] = "vendor/glfw/lib-vc2019"
-
 project "Core"
     kind "StaticLib"
     language "C++"
@@ -17,7 +7,7 @@ project "Core"
     objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
     pchheader "cfpch.h"
-    pchsource "src/Core/cfpch.cpp"
+    pchsource "src/cfpch.cpp"
 
     files
     {
@@ -28,15 +18,15 @@ project "Core"
     includedirs
     {
         "src",
-        IncludeDirs["spdlog"],
-        IncludeDirs["glfw"],
-        IncludeDirs["glad"],
-        IncludeDirs["glm"]
+        "vendor/spdlog/include",
+        "%{IncludeDirs.glfw}",
+        "%{IncludeDirs.glad}",
+        "%{IncludeDirs.glm}"
     }
 
     libdirs
     {
-        LibDirs["glfw"]
+        "%{LibDirs.glfw}"
     }
 
     links
@@ -53,6 +43,7 @@ project "Core"
     defines
     {
         "CF_PLATFORM_WINDOWS",
+        "CF_BUILD_DLL",
         "_CRT_SECURE_NO_WARNINGS",
 		"GLFW_INCLUDE_NONE"
     }

@@ -1,11 +1,11 @@
-#include "Core/cfpch.h"
+#include "cfpch.h"
 #include "Log.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
 namespace Crossfire
 {
 
-	Ref<spdlog::logger> Log::s_Logger;
+/*	Ref<spdlog::logger> Log::s_Logger;
 	
 	void Log::Initialize()
 	{
@@ -15,4 +15,5 @@ namespace Crossfire
 		s_Logger = spdlog::stdout_color_mt("CrossfireLogger");
 		s_Logger->set_level(spdlog::level::trace);
 	}
+	*/
 }

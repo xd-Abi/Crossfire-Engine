@@ -1,13 +1,3 @@
--- Include directories relative to root folder (solution directory)
-IncludeDirs = {}
-IncludeDirs["spdlog"] = "vendor/spdlog/include"
-IncludeDirs["glfw"] = "vendor/glfw/include"
-IncludeDirs["glad"] = "vendor/glad/include"
-IncludeDirs["glm"] = "vendor/glm"
-
-LibDirs = {}
-LibDirs["glfw"] = "vendor/glfw/lib-vc2019"
-
 project "Engine"
     kind "ConsoleApp"
     language "C++"
@@ -15,9 +5,6 @@ project "Engine"
 
     targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
     objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
-
-    pchheader "cfpch.h"
-    pchsource "src/Core/cfpch.cpp"
 
     files
     {
@@ -28,7 +15,11 @@ project "Engine"
     includedirs
     {
         "src",
-        "%{wks.location}/Core/src"
+        "%{wks.location}/Core/src",
+        "%{IncludeDirs.spdlog}",
+        "%{IncludeDirs.glfw}",
+        "%{IncludeDirs.glad}",
+        "%{IncludeDirs.glm}"
     }
     
     links
@@ -41,23 +32,19 @@ project "Engine"
         "CF_PLATFORM_WINDOWS"
     }
 
-
     filter "system:windows"
         cppdialect "C++17"
         staticruntime "On"
         systemversion "latest"
 
     filter "configurations:Debug"
-        defines "CF_DEBUG"    
         symbols "On"
         buildoptions "/MDd"
 
     filter "configurations:Release"
-        defines "CF_RELEASE"
         optimize "On"
         buildoptions "/MD"
 
     filter "configurations:Dist"
-        defines "CF_DIST"
         optimize "On"
         buildoptions "/MD"

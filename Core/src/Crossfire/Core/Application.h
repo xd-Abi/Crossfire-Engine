@@ -2,8 +2,8 @@
 
 #include "Base.h"
 #include "Window.h"
-#include "Events/Event.h"
-#include "Events/ApplicationEvent.h"
+#include "Crossfire/Events/Event.h"
+#include "Crossfire/Events/ApplicationEvent.h"
 
 namespace Crossfire
 {
@@ -38,5 +38,9 @@ namespace Crossfire
 
 		static Application* s_Instance;
 	};
+
+	// To be defined in Client
+
+	Application* CreateApplication();
 }
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "cfpch.h"
 #include <memory>
 
 #include "PlatformDetection.h"

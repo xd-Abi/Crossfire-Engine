@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Renderer/Shader.h"
+#include "Crossfire/Renderer/Shader.h"
 #include "glad/glad.h"
 
 namespace Crossfire

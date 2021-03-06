@@ -1,7 +1,7 @@
-#include "Core/cfpch.h"
+#include "cfpch.h"
 #include "Renderer.h"
-#include "Core/Application.h"
-#include "Core/Window.h"
+#include "Crossfire/Core/Application.h"
+#include "Crossfire/Core/Window.h"
 
 #include "Mesh.h"
 #include "Shader.h"

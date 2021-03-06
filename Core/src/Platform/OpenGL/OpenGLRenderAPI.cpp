@@ -1,6 +1,6 @@
-#include "Core/cfpch.h"
+#include "cfpch.h"
 #include "OpenGLRenderAPI.h"
-#include "Core/Assert.h"
+#include "Crossfire/Core/Assert.h"
 
 #include <glad/glad.h>
 

@@ -13,5 +13,6 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Log/Log.h"
-#include "Assert.h"
+#include "Crossfire/Log/Log.h"
+#include "Crossfire/Core/Assert.h"
+#include "Crossfire/Core/Base.h"

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RenderAPI.h"
-#include "Core/Window.h"
+#include "Crossfire/Core/Window.h"
 
 namespace Crossfire
 {

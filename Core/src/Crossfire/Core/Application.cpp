@@ -1,7 +1,7 @@
-#include "Core/cfpch.h"
+	#include "cfpch.h"
 #include "Application.h"
 
-#include "Renderer/Renderer.h"
+#include "Crossfire/Renderer/Renderer.h"
 
 namespace Crossfire
 {
