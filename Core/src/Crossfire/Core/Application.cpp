@@ -25,7 +25,20 @@ namespace Crossfire
 
 	Application::~Application()
 	{
+		for (Layer* layer : m_LayerStack)
+			layer->OnDetach();
+	}
 
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
@@ -34,6 +47,13 @@ namespace Crossfire
 
 		dispatcher.Dispatch<WindowCloseEvent>(CF_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(CF_BIND_EVENT_FN(Application::OnWindowResize));
+
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
+		{
+			if (e.Handled)
+				break;
+			(*it)->OnEvent(e);
+		}
 
 		CF_CORE_INFO(e.ToString());
 	}
@@ -56,10 +76,9 @@ namespace Crossfire
 	{
 		if (!m_Minimized)
 		{
-			//TODO: Update Game
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate(ts);
 		}
-
-		CF_CORE_INFO("I'm Updating! {0}", ts);
 
 		m_Window->OnUpdate();
 	}
@@ -69,6 +88,9 @@ namespace Crossfire
 		if (!m_Minimized)
 		{ 
 			Renderer::OnRender();
+
+			for (Layer* layer : m_LayerStack)
+				layer->OnRender();
 		}
 
 		m_Window->OnDraw();

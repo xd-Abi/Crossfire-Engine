@@ -4,6 +4,7 @@
 #include "Window.h"
 #include "Crossfire/Events/Event.h"
 #include "Crossfire/Events/ApplicationEvent.h"
+#include "Crossfire/Layer/LayerStack.h"
 #include "Timestep.h"
 
 namespace Crossfire
@@ -20,6 +21,9 @@ namespace Crossfire
 		void Run();
 		void OnEvent(Event& e);
 		
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
+
 		Window& GetWindow() { return *m_Window; }
 		static Application& Get() { return *s_Instance; }
 
@@ -38,6 +42,8 @@ namespace Crossfire
 		bool m_Running = true;
 		bool m_Minimized = false;
 		float m_LastFrameTime = 0.0f;
+
+		LayerStack m_LayerStack;
 
 	private:
 		static Application* s_Instance;
