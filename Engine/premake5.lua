@@ -27,11 +27,6 @@ project "Engine"
         "Core"
     }
 
-    defines
-    {
-        "CF_PLATFORM_WINDOWS"
-    }
-
     filter "system:windows"
         cppdialect "C++17"
         staticruntime "On"

@@ -1,8 +1,10 @@
-	#include "cfpch.h"
+#include "cfpch.h"
 #include "Application.h"
 
 #include "Crossfire/Renderer/Renderer.h"
-#include "Crossfire/Log/Log.h"
+#include "Timestep.h"
+
+#include "GLFW/glfw3.h"
 
 namespace Crossfire
 {
@@ -41,6 +43,7 @@ namespace Crossfire
 
 		while (m_Running)
 		{
+
 			OnUpdate();
 			OnRender();
 		}

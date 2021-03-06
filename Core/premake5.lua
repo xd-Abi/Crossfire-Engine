@@ -42,8 +42,6 @@ project "Core"
 
     defines
     {
-        "CF_PLATFORM_WINDOWS",
-        "CF_BUILD_DLL",
         "_CRT_SECURE_NO_WARNINGS",
 		"GLFW_INCLUDE_NONE"
     }
