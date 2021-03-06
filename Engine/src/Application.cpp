@@ -2,16 +2,16 @@
 #include <Crossfire/Core/EntryPoint.h>
 
 
-	class EngineApplication : public Crossfire::Application
+	class Application : public Crossfire::Application
 	{
 
 	public:
-		EngineApplication()
+		Application()
 		{
 
 		}
 
-		~EngineApplication()
+		~Application()
 		{
 
 		}
@@ -19,5 +19,5 @@
 
 	Crossfire::Application* Crossfire::CreateApplication()
 	{
-		return new EngineApplication();
+		return new Application();
 	}

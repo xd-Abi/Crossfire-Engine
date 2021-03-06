@@ -19,6 +19,6 @@ IncludeDirs["glm"] = "%{wks.location}/Core/vendor/glm"
 LibDirs = {}
 LibDirs["glfw"] = "%{wks.location}/Core/vendor/glfw/lib-vc2019"
 
-include "Engine"
 include "Core"
 include "Core/vendor/glad"
+include "Engine"

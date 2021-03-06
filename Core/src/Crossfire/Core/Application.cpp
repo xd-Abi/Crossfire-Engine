@@ -2,6 +2,7 @@
 #include "Application.h"
 
 #include "Crossfire/Renderer/Renderer.h"
+#include "Crossfire/Log/Log.h"
 
 namespace Crossfire
 {
@@ -12,6 +13,8 @@ namespace Crossfire
 	{
 		s_Instance = this;
 		
+		Log::Initialize();
+
 		m_Window = Window::Create(WindowProps("Crossfire | 0.0.1 Aplha"));
 		m_Window->SetEventCallback(CF_BIND_EVENT_FN(Application::OnEvent));
 	

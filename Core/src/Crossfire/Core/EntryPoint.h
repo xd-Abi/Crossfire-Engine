@@ -8,8 +8,6 @@ extern Crossfire::Application* Crossfire::CreateApplication();
 
 int main(int argc, char** argv)
 {
-	//Crossfire::Log::Initialize();
-
 	auto app = Crossfire::CreateApplication();
 	app->Run();
 	delete app;

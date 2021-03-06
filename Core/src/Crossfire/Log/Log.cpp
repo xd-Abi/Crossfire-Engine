@@ -5,7 +5,7 @@
 namespace Crossfire
 {
 
-/*	Ref<spdlog::logger> Log::s_Logger;
+	Ref<spdlog::logger> Log::s_Logger;
 	
 	void Log::Initialize()
 	{
@@ -15,5 +15,4 @@ namespace Crossfire
 		s_Logger = spdlog::stdout_color_mt("CrossfireLogger");
 		s_Logger->set_level(spdlog::level::trace);
 	}
-	*/
 }
