@@ -11,15 +11,21 @@ namespace Crossfire
 
 	Application* Application::s_Instance;
 
-	Application::Application()
+	Application::Application(WindowProps& props)
 	{
+		if (s_Instance != nullptr)
+		{
+			CF_CORE_INFO("Application already exists!");
+			return;
+		}
+
 		s_Instance = this;
-		
+
 		Log::Initialize();
 
-		m_Window = Window::Create(WindowProps("Crossfire | 0.0.1 Aplha"));
+		m_Window = Window::Create(props);
 		m_Window->SetEventCallback(CF_BIND_EVENT_FN(Application::OnEvent));
-	
+
 		Renderer::Init();
 	}
 
@@ -27,35 +33,6 @@ namespace Crossfire
 	{
 		for (Layer* layer : m_LayerStack)
 			layer->OnDetach();
-	}
-
-	void Application::PushLayer(Layer* layer)
-	{
-		m_LayerStack.PushLayer(layer);
-		layer->OnAttach();
-	}
-
-	void Application::PushOverlay(Layer* layer)
-	{
-		m_LayerStack.PushOverlay(layer);
-		layer->OnAttach();
-	}
-
-	void Application::OnEvent(Event& e)
-	{
-		EventDispatcher dispatcher(e);
-
-		dispatcher.Dispatch<WindowCloseEvent>(CF_BIND_EVENT_FN(Application::OnWindowClose));
-		dispatcher.Dispatch<WindowResizeEvent>(CF_BIND_EVENT_FN(Application::OnWindowResize));
-
-		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
-		{
-			if (e.Handled)
-				break;
-			(*it)->OnEvent(e);
-		}
-
-		CF_CORE_INFO(e.ToString());
 	}
 
 	void Application::Run()
@@ -95,7 +72,36 @@ namespace Crossfire
 
 		m_Window->OnDraw();
 	}
+
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
+	}
 	
+	void Application::OnEvent(Event& e)
+	{
+		EventDispatcher dispatcher(e);
+
+		dispatcher.Dispatch<WindowCloseEvent>(CF_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(CF_BIND_EVENT_FN(Application::OnWindowResize));
+
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
+		{
+			if (e.Handled)
+				break;
+			(*it)->OnEvent(e);
+		}
+
+		CF_CORE_INFO(e.ToString());
+	}
+
 	bool Application::OnWindowClose(WindowCloseEvent& e)
 	{
 		m_Running = false;

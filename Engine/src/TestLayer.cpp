@@ -34,10 +34,10 @@ namespace Crossfire
 		std::string version = "#version 330";
 		std::string VertexShader =
 			version + "\n" +
-			"layout (location = 0) in vec3 position;\n" +
+			"layout (location = 0) in vec2 u_dimensions;\n" +
 			"void main(){\n" +
-			"gl_Position = vec4(position,1);\n"
-			+ "}\n";
+			"gl_Position = vec4(u_dimensions, 0,1);\n"
+			 "}\n";
 
 		std::string FragmentShader =
 			version + "\n" +
@@ -56,7 +56,7 @@ namespace Crossfire
 
 	void TestLayer::OnUpdate(Timestep ts)
 	{
-		CF_INFO("TEST {0}", ts);
+		CF_CORE_INFO("TEST {0}", ts);
 	}
 
 	void TestLayer::OnRender()

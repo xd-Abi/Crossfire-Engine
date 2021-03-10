@@ -9,6 +9,7 @@ namespace Crossfire
 
 	public:
 		EngineApp()
+			: Application()
 		{
 			PushLayer(new TestLayer());
 		}

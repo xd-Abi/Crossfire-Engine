@@ -15,7 +15,7 @@ namespace Crossfire
 
 	public:
 
-		Application();
+		Application(WindowProps& props = WindowProps());
 		virtual ~Application();
 
 		void Run();
